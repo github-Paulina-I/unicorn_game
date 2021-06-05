@@ -41,7 +41,10 @@ def check_collisions(pipes):
     return True
 
 
-#ef update_score:
+def update_score(score, high_score):
+    if score > high_score:
+        high_score = score
+    return  high_score
 
 def display_scores(game_state):
     #scores = game_font.render(str(int(score)), True, (51,102,204))
@@ -104,6 +107,7 @@ while True:
                 pipe_list.clear()
                 unicorn_rectangle.center = (200, 300)
                 unicorn_move = 0
+                score = 0
 
         if event.type == SPAWNPIPE:
             pipe_list.extend(create_pipe())
@@ -128,6 +132,7 @@ while True:
         screen.blit(unicorn_image, unicorn_rectangle)
 
     else:
+        high_score = update_score(high_score, score)
         display_scores("game_over")
 
     move_ground()
