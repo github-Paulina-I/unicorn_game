@@ -47,24 +47,32 @@ def update_score(score, high_score):
     return  high_score
 
 def display_scores(game_state):
-    #scores = game_font.render(str(int(score)), True, (51,102,204))
-    #scores_rect = scores.get_rect(center = (100, 50))
-    #screen.blit(scores, scores_rect)
     if game_state == 'main_game':
         score_surface = game_font.render(str(int(score)), True, (51,102,204))
         score_rect = score_surface.get_rect(center=(100, 50))
         screen.blit(score_surface, score_rect)
     if game_state == 'game_over':
         score_surface = game_font.render(f'Score: {int(score)}', True, (51,102,204))
-        score_rect = score_surface.get_rect(center=(350, 100))
+        score_rect = score_surface.get_rect(center=(350, 160))
         screen.blit(score_surface, score_rect)
 
         high_score_surface = game_font.render(f'High score: {int(high_score)}', True, (51,102,204))
-        high_score_rect = high_score_surface.get_rect(center=(350, 180))
+        high_score_rect = high_score_surface.get_rect(center=(350, 220))
         screen.blit(high_score_surface, high_score_rect)
+
+def display_over():
+    display_over = game_font.render("Game over!", True, (230,28,102))
+    over_rect = display_over.get_rect(center=(350, 50))
+    screen.blit(display_over, over_rect)
+
+    start_font = pygame.font.SysFont("arialblack", 30)
+    display_start = start_font.render("Tap SPACE to play again", True, (230, 28, 102))
+    start_rect = display_start.get_rect(center=(350, 350))
+    screen.blit(display_start, start_rect)
 
 
 pygame.init()
+
 screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Unicorn Journey")
 clock = pygame.time.Clock()
@@ -133,6 +141,7 @@ while True:
 
     else:
         high_score = update_score(high_score, score)
+        display_over()
         display_scores("game_over")
 
     move_ground()
