@@ -35,8 +35,10 @@ def draw_pipes(pipes):
 def check_collisions(pipes):
     for pipe in pipes:
         if unicorn_rectangle.colliderect(pipe):
+            horse_sound.play()
             return False
     if unicorn_rectangle.top <= 0 or unicorn_rectangle.bottom >= 510:
+        horse_sound.play()
         return False
     return True
 
@@ -101,6 +103,10 @@ SPAWNPIPE = pygame.USEREVENT
 pygame.time.set_timer(SPAWNPIPE, 1300)
 pipe_height = [270, 380, 450]
 
+tap_sound = pygame.mixer.Sound("sounds/jump_sound2.wav")
+horse_sound = pygame.mixer.Sound("sounds/horse.wav")
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -110,6 +116,7 @@ while True:
             if event.key == pygame.K_SPACE and game_on:
                 unicorn_move = 0
                 unicorn_move -= 7
+                tap_sound.play()
             if event.key == pygame.K_SPACE and game_on == False:
                 game_on = True
                 pipe_list.clear()
