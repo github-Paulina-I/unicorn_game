@@ -51,7 +51,7 @@ def update_score(score, high_score):
 def display_scores(game_state):
     if game_state == 'main_game':
         score_surface = game_font.render(str(int(score)), True, (51,102,204))
-        score_rect = score_surface.get_rect(center=(100, 50))
+        score_rect = score_surface.get_rect(center=(60, 50))
         screen.blit(score_surface, score_rect)
     if game_state == 'game_over':
         score_surface = game_font.render(f'Score: {int(score)}', True, (51,102,204))
