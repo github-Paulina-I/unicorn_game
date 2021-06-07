@@ -18,8 +18,8 @@ game_font = pygame.font.SysFont("SANS_BOLD",70, bold=True)
 
 def start_the_game(difficulty):
     if difficulty == 1: #łatwy
-        unicornSpeed = 4
-        pipeSpeed = 1300
+        unicornSpeed = 6
+        pipeSpeed = 1600
     elif difficulty == 2: #średni
         unicornSpeed = 7
         pipeSpeed = 1300
