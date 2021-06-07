@@ -15,6 +15,7 @@ screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Unicorn Journey")
 clock = pygame.time.Clock()
 game_font = pygame.font.SysFont("SANS_BOLD",70, bold=True)
+best_scores = []
 
 def start_the_game(difficulty):
     if difficulty == 1: #łatwy
@@ -66,7 +67,7 @@ def start_the_game(difficulty):
             high_score = score
         return  high_score
 
-    def display_scores(game_state):
+    def display_scores(game_state, best_scores):
         if game_state == 'main_game':
             score_surface = game_font.render(str(int(score)), True, (51,102,204))
             score_rect = score_surface.get_rect(center=(60, 50))
@@ -76,7 +77,7 @@ def start_the_game(difficulty):
             score_rect = score_surface.get_rect(center=(350, 160))
             screen.blit(score_surface, score_rect)
 
-            high_score_surface = game_font.render(f'High score: {int(high_score)}', True, (51,102,204))
+            high_score_surface = game_font.render(f'High score: {int(max(best_scores))}', True, (51,102,204))
             high_score_rect = high_score_surface.get_rect(center=(350, 220))
             screen.blit(high_score_surface, high_score_rect)
 
@@ -155,14 +156,15 @@ def start_the_game(difficulty):
             draw_pipes(pipe_list)
 
             score +=0.01
-            display_scores("main_game")
+            display_scores("main_game", best_scores)
 
             screen.blit(unicorn_image, unicorn_rectangle)
 
         else:
             high_score = update_score(high_score, score)
+            best_scores.append(high_score)#######################################################
             display_over()
-            display_scores("game_over")
+            display_scores("game_over", best_scores)
 
         move_ground()
         if ground_x <= -700:
@@ -199,14 +201,13 @@ def mainMenu():
     menu.add.button('Play', setDifficulty)
     menu.add.text_input('Name ', default='Player 1')
     menu.add.button('How to play', howToPlay)
-    menu.add.button('High scores', highScores)
     menu.add.button('Autors', about)
     menu.add.button('Quit', pygame_menu.events.EXIT)
 
     menu.mainloop(screen)
 
 def setDifficulty():
-    menu = pygame_menu.Menu(SCREEN_HEIGHT, SCREEN_WIDTH, 'How to play',
+    menu = pygame_menu.Menu(SCREEN_HEIGHT, SCREEN_WIDTH, 'Difficulty',
                             theme=mytheme)
     description = 'Choose difficulty'
 
@@ -221,15 +222,6 @@ def howToPlay():
     menu = pygame_menu.Menu(SCREEN_HEIGHT, SCREEN_WIDTH, 'How to play',
                             theme=mytheme)
     description= 'Press SPACE to jump and avoid rainbow'
-
-    menu.add.label(description, max_char=-1, font_size=20)
-    menu.add.button('Back', mainMenu)
-    menu.mainloop(screen)
-
-def highScores():
-    menu = pygame_menu.Menu(SCREEN_HEIGHT, SCREEN_WIDTH, 'High Scores',
-                            theme=mytheme)
-    description= 'Test'
 
     menu.add.label(description, max_char=-1, font_size=20)
     menu.add.button('Back', mainMenu)
