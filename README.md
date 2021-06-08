@@ -5,7 +5,7 @@ Paulina Iwach
 ### Short description
 Unicorn Journey is a game in which the player's task is to fly the unicorn and avoid rainbow obstacles.\
 Controls: press spacebar to make the unicorn fly.\
-Game over: The game is over when the unicorn touches the rainbow or hits the ground.\
+Game over: The game is over when the unicorn touches the rainbow or hits the ground.\\
 ![Screenshot](screen1.png)
 
 ### Technologies
