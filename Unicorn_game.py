@@ -186,7 +186,7 @@ mytheme.widget_font_shadow_color = (0, 0, 0)
 
 
 def mainMenu():
-    menu = pygame_menu.Menu(SCREEN_HEIGHT, SCREEN_WIDTH, 'Welcome',
+    menu = pygame_menu.Menu(SCREEN_HEIGHT, SCREEN_WIDTH, 'Welcome in Unicorn Journey',
                             theme=mytheme)
     menu.add.button('Play', setDifficulty)
     menu.add.button('How to play', howToPlay)
