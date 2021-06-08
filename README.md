@@ -5,7 +5,7 @@ Paulina Iwach
 ### Short description
 Unicorn Journey is a game in which the player's task is to fly the unicorn and avoid rainbow obstacles.\
 Controls: press spacebar to make the unicorn fly.\
-Game over: The game is over when the unicorn touches the rainbow or hits the ground.\\
+Game over: The game is over when the unicorn touches the rainbow or hits the ground.
 ![Screenshot](screen1.png)
 
 ### Technologies
@@ -19,4 +19,4 @@ Game over: The game is over when the unicorn touches the rainbow or hits the gro
 2. Install the project's development and runtime requirements:
 `pip install -r requirements.txt`
 3. Run the game:
- python Unicorn_game.py
+ `python Unicorn_game.py`
