@@ -4,6 +4,7 @@ from pygame.locals import *
 import random
 import pygame_menu
 
+
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 600
 SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)

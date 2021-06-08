@@ -1,7 +1,7 @@
 #W tym pliku powinny się znaleźć potrzebne biblioteki orz określone ich wersje np.:
-package-one==1.9.4
-package-two==3.7.1
-package-three==1.0.1
-packge-four
+pygame==2.0.1
+sys==3.7.9
+random==3.7.9
+pygame_menu==4.0.7
 
 
